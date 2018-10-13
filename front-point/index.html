@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Star Notary</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+        <script type="text/javascript" src="script/index.js"></script>
+    </head>
+
+    <body>
+      <div class="container">
+          <h1>Star Notary</h1>
+
+          <h2>Get a star by Id</h2>
+
+          <input id="searcher"/>
+          <button id= "search-button" onclick = "getStarInfo()">StarDetail Searcher</button>
+          <label>Star Infomation:</label>
+          <div id="StarContent"></div>
+          <label>Star Owner:</label>
+          <div id="owner"></div>
+
+          <h2>Claim a new star</h2>
+          <div class="row">
+              <label class="bold">Star Name:</label>
+              <input id="star-name"/>
+          </div>
+
+          <div class="row">
+              <label class="bold">Star Story:</label>
+              <input id="star-story"/>
+          </div>
+
+          <div class="row">
+              <label class="bold">Star Coordinate:</label>
+              <p class="coordinate">
+                Dec：dec_<input type="text" id="dec"><br>
+                Mag：mag_<input type="text" id="mag"><br>
+                Cent：ra_<input type="text" id="cent">
+              </p>
+          </div>
+
+          <button id="claim-button" onclick="createStar()">Claim Star</button>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+body {
+    background-color:#F0F0F0;
+    padding: 2em 0;
+    font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+.row {
+    margin-bottom:10px;
+}
+label{
+  display: block;
+  margin: 10px 0px 5px 0px;
+  font-size: 18px;
+}
+input{
+  width:91%;
+  padding: 1em 1em;
+}
+.coordinate{
+  font-style: italic;
+  font-size: 15px;
+}
+.coordinate input{
+  width:100px;
+  border:none;
+  background: none;
+}
+#claim-button{
+  display: block;
+  margin: 2em 0;
+  padding: 1em 1em;
+}
+#search-button{
+  width: 30%;
+  padding: 1em 1em;
+  display: inline-block;
+}
+#searcher{
+  width:60%;
+  display: inline-block;
+}
+#StarContent,#owner{
+  width:91%;
+  display: inline-block;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
+  padding: 1em 1em;
+  margin: 0.5em 0;
+  background-color: white;
+}

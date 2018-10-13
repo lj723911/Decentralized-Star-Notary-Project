@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Star Notary</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Star Notary</h1>
+
+            <h2>Get a star by Id</h2>
+
+            <input id="searcher"/>
+            <button id= "search-button" onclick = "getStarInfo()">StarDetail Searcher</button>
+            <label>Star Infomation:</label>
+            <div id="StarContent"></div>
+            <label>Star Owner:</label>
+            <div id="owner"></div>
+
+            <h2>Claim a new star</h2>
+            <div class="row">
+                <label class="bold">Star Name:</label>
+                <input id="star-name"/>
+            </div>
+
+            <div class="row">
+                <label class="bold">Star Story:</label>
+                <input id="star-story"/>
+            </div>
+
+            <div class="row">
+                <label class="bold">Star Coordinate:</label>
+                <p class="coordinate">
+                  Dec：dec_<input type="text" id="dec"><br>
+                  Mag：mag_<input type="text" id="mag"><br>
+                  Cent：ra_<input type="text" id="cent">
+                </p>
+            </div>
+
+            <button id="claim-button" onclick="createStar()">Claim Star</button>
+        </div>
+
+
+    </body>
+    <script type="text/javascript">
+       let getStarInfo = function(){
+         let id = $("#searcher").val()
+         $.ajax({
+           type:"GET",
+           url:"http://localhost:8000/getStarInfo/" + id,
+           success:function(data){
+               document.getElementById("StarContent").innerHTML= data.starInfo
+               document.getElementById("owner").innerHTML = data.owner
+           },
+           error:function(jqXHR){
+             console.log("Error:"+jqXHR.status)
+           }
+         })
+       }
+       let createStar = function(){
+          let name = document.getElementById("star-name").value;
+          let story = document.getElementById("star-story").value;
+          let cent = "ra_"+ document.getElementById("cent").value;
+          let dec = "dec_"+ document.getElementById("dec").value;
+          let mag = "mag_"+ document.getElementById("mag").value;
+
+          $.ajax({
+            type:"POST",
+            url:"http://localhost:8000/claimstar",
+            data:{'starName':name,'starStory':story,'cent':cent,'dec':dec,'mag':mag},
+            success:function(data){
+              alert("remember your id:",data)
+            }
+          })
+
+       }
+    </script>
+</html>
